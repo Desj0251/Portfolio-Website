@@ -6,7 +6,7 @@
 // =================================================================================
 
 // =================================================================================
-// === Imports
+// === Imports :
 // =================================================================================
 import React, { Component } from 'react';
 import './Home.css';
@@ -14,18 +14,17 @@ import Home_Avatar from './assets/Home_Avatar.jpg'
 import { _HOME_NAV_LIST, _HOME_NAV_SOCIAL, _HOME_STRINGS } from './data';
 
 // =================================================================================
-// === Home.Component
+// === Home.Component :
 // =================================================================================
 export default class Home extends Component { 
     constructor(props) {
         super(props);
         this.state = {
             TopNav : {
-                isActive: 'HOME_001' 
+                isActive: _HOME_NAV_LIST[0].id
             } 
         }
     }
-
     toggleActive = (_newProps) => {
         this.setState({
             TopNav : { 
@@ -33,15 +32,11 @@ export default class Home extends Component {
             }
         });
     }
-
     render() {
         return (
             <div className="Home w-100">
-                
                 <div className="Home_header-image" />
-                <HomeNavMedia
-                
-                />
+                <HomeNavMedia />
                 <HomeNav 
                     _isActive = { this.state.TopNav.isActive }
                     _toggle = { this.toggleActive.bind(this) }
@@ -53,7 +48,7 @@ export default class Home extends Component {
 }
 
 // =================================================================================
-// === Home.Component.HomeNavMedia
+// === Home.Component.HomeNavMedia :
 // =================================================================================
 function HomeNavMedia(props) {
     return (
@@ -62,7 +57,7 @@ function HomeNavMedia(props) {
                 <img src={Home_Avatar} class="mr-3 h-75 avatar my-auto" alt="Home Avatar" />
                 <div className="media-body my-auto">
                     <p class="mb-0">{_HOME_STRINGS.media.name}</p>
-                    <small className="muted font-italic font-weight-lighter">{_HOME_STRINGS.media.title}</small>
+                    <small className="muted font-weight-lighter">{_HOME_STRINGS.media.title}</small>
                 </div>
             </div>
             <div className="text-right my-auto">
@@ -90,7 +85,7 @@ function _render_social(props) {
 }
 
 // =================================================================================
-// === Home.Component.HomeNav
+// === Home.Component.HomeNav :
 // =================================================================================
 function HomeNav(props) {
     return ( 

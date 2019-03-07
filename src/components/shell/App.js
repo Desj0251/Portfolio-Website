@@ -6,14 +6,14 @@
 // =================================================================================
 
 // =================================================================================
-// === Imports
+// === Imports :
 // =================================================================================
 import React, { Component } from 'react';
 import './App.css';
 import { _SIDE_NAV_LIST, _SIDE_NAV_APPS, _APP_STRINGS } from './data';
 
 // =================================================================================
-// === App.Component
+// === App.Component :
 // =================================================================================
 export default class App extends Component {
   
@@ -22,7 +22,7 @@ export default class App extends Component {
     this.state = {
       SideNav : {
         isDrawerOpen: true,
-        isActive: 'NAV_001' 
+        isActive: _SIDE_NAV_LIST[0].id
       } 
     }
   }
@@ -69,7 +69,7 @@ export default class App extends Component {
 }
 
 // =================================================================================
-// === App.Component.SideNav
+// === App.Component.SideNav :
 // =================================================================================
 function SideNav(props) {
   return <div className="App_SideNav">
@@ -126,7 +126,7 @@ function _handleNavItemOnClick(id, toggle) { return function(e) { toggle(id); } 
 function isActiveItem(current_id, active_id) { return ( current_id === active_id ); }
 
 // =================================================================================
-// === App.Component.MainContent
+// === App.Component.MainContent :
 // =================================================================================
 function MainContent(props) {
   return (
@@ -151,12 +151,11 @@ function _renderContent(active_id) {
 }
 
 // =================================================================================
-// === App.Component.TopNav
+// === App.Component.TopNav :
 // =================================================================================
 function TopNav(props) {
   return (
     <nav className="App_TopNav navbar fixed-top text-light d-flex justify-content-between">
-      
       <div className="form-inline">
         <TopNavButton
           _icon="fas fa-bars"
@@ -164,11 +163,9 @@ function TopNav(props) {
         />
         <span className="navbar-brand mb-0 h1 ml-3">{props._title}</span>
       </div>
-
       <div className="form-inline flex-grow-1 pl-3 pr-3">
         <TopNavSearch />
       </div>
-
       <div className="form-inline">
         <ul className="nav">
           <li className="nav-item">
@@ -183,7 +180,6 @@ function TopNav(props) {
     </nav>
   );
 }
-
 function TopNavButton(props) {
   return (
     <button className="btn btn-outline-light" type="button" onClick={props._onClick}>

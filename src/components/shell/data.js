@@ -1,5 +1,18 @@
+// =================================================================================
+// ==   File    : Home.data.js
+// ==   Author  : John Desjardins | K3nata8
+// ==   Version : 0.0.1
+// ==   Date    : March 2019
+// =================================================================================
+
+// =================================================================================
+// === Imports :
+// =================================================================================
 import Home from '../home/Home';
 
+// =================================================================================
+// === Custom Classes :
+// =================================================================================
 class _navitem {
   constructor( id, title, icon, content ) {
     this.id = id;
@@ -9,15 +22,33 @@ class _navitem {
   }
 }
 
+// =================================================================================
+// === Constants :
+// =================================================================================
 export const _SIDE_NAV_LIST = [
-  new _navitem( 'NAV_001', 'Home', 'fas fa-home', Home ),
-  new _navitem( 'NAV_002', 'Trending', 'fas fa-fire', null ),
-  new _navitem( 'NAV_003', 'Subscription', 'fab fa-youtube', null ) 
+  new _navitem(   'NAV_001', 
+                  'Home', 
+                  'fas fa-home', 
+                  Home ),
+  new _navitem(   'NAV_002', 
+                  'Trending', 
+                  'fas fa-fire', 
+                  null ),
+  new _navitem(   'NAV_003', 
+                  'Subscription', 
+                  'fab fa-youtube', 
+                  null ) 
 ];
 export const _SIDE_NAV_APPS = [
-  new _navitem( 'APP_001', 'List Item 1', 'fas fa-th-list', null ) 
+  new _navitem(   'APP_001', 
+                  'List Item 1', 
+                  'fas fa-th-list', 
+                  null ) 
 ];
 
+// =================================================================================
+// === Strings :
+// =================================================================================
 export const _APP_STRINGS = {
   TopNav : {
     Title : 'Navbar'
