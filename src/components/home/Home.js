@@ -12,6 +12,12 @@ import React, { Component } from 'react';
 import './Home.css';
 import Home_Avatar from './assets/Home_Avatar.jpg'
 import { _HOME_NAV_LIST, _HOME_NAV_SOCIAL, _HOME_STRINGS } from './data';
+import $ from 'jquery';
+
+
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+});
 
 // =================================================================================
 // === Home.Component :
@@ -54,9 +60,9 @@ function HomeNavMedia(props) {
     return (
         <div className="Home_nav-media d-flex justify-content-between">
             <div className="media h-100 w-50">
-                <img src={Home_Avatar} class="mr-3 h-75 avatar my-auto" alt="Home Avatar" />
+                <img src={Home_Avatar} className="mr-3 h-75 avatar my-auto" alt="Home Avatar" />
                 <div className="media-body my-auto">
-                    <p class="mb-0">{_HOME_STRINGS.media.name}</p>
+                    <p className="mb-0">{_HOME_STRINGS.media.name}</p>
                     <small className="muted font-weight-lighter">{_HOME_STRINGS.media.title}</small>
                 </div>
             </div>
@@ -68,7 +74,8 @@ function HomeNavMedia(props) {
 }
 function SocialButton(props) {
     return (
-        <button className="btn btn-outline-light ml-2" type="button" onClick={props._onClick}>
+        <button className="btn btn-outline-light ml-2" type="button" onClick={ goToUrl(props._url) }
+        data-toggle="tooltip" data-placement="top" title={props._tooltip}>
             <i className={props._icon}/>
         </button> 
     );
@@ -76,12 +83,19 @@ function SocialButton(props) {
 function _render_social(props) {
     let SocialItems = props.map((item, index) => 
         <SocialButton 
-            _icon       = {item.icon}
-            _onClick    = { function(e) {} }
+            key         = { index }
+            _icon       = { item.icon }
+            _url        = { item.url }
             _tooltip    = { item.desc }
         />
     );
     return SocialItems;
+}
+function goToUrl(url) {
+    return function (e) {
+       var win = window.open(url, '_blank');
+       win.focus();
+    }
 }
 
 // =================================================================================
@@ -113,7 +127,9 @@ function _isActive( item_id, active_id ) {
 function HomeNavItem(props) {
     return ( 
         <li className="nav-item" onClick={ _handleNavItemOnClick( props._id, props._toggle ) }>
-            <div className={"h-100 Home_topnav-item " + isActive(props._active)}><span className="nav-link">{props._title}</span></div>
+            <div className={"h-100 Home_topnav-item " + isActive(props._active)}>
+                <span className="nav-link">{props._title}</span>
+            </div>
         </li> 
     );
 }

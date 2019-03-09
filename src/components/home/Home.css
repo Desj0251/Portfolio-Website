@@ -61,3 +61,22 @@
 .muted {
     color : #909090
 }
+
+.tooltip-inner {
+    background-color: #1C1C1C;
+}
+.tooltip.bs-tooltip-right .arrow:before {
+    border-right-color: transparent;
+}
+.tooltip.bs-tooltip-left .arrow:before {
+    border-left-color: transparent;
+}
+.tooltip.bs-tooltip-bottom .arrow:before {
+    border-bottom-color: transparent;
+}
+.tooltip.bs-tooltip-top .arrow:before {
+    border-top-color: transparent;
+}
+.tooltip-inner {
+    border: 1px solid white;
+}

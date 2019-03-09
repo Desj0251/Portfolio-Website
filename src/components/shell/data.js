@@ -41,8 +41,8 @@ export const _SIDE_NAV_LIST = [
 ];
 export const _SIDE_NAV_APPS = [
   new _navitem(   'APP_001', 
-                  'List Item 1', 
-                  'fas fa-th-list', 
+                  'JSON Manager', 
+                  'far fa-list-alt', 
                   null ) 
 ];
 
