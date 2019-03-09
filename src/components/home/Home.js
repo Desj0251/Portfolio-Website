@@ -14,11 +14,6 @@ import Home_Avatar from './assets/Home_Avatar.jpg'
 import { _HOME_NAV_LIST, _HOME_NAV_SOCIAL, _HOME_STRINGS } from './data';
 import $ from 'jquery';
 
-
-$(function () {
-    $('[data-toggle="tooltip"]').tooltip()
-});
-
 // =================================================================================
 // === Home.Component :
 // =================================================================================
@@ -30,6 +25,12 @@ export default class Home extends Component {
                 isActive: _HOME_NAV_LIST[0].id
             } 
         }
+    }
+    componentWillMount = () => {
+        // === Initialize Tooltips ===
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        });
     }
     toggleActive = (_newProps) => {
         this.setState({
