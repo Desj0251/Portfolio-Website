@@ -18,7 +18,7 @@
 }
 .PDF_reader_nav-media {
     background-color: #1C1C1C;
-    padding : 8px 16px;
+    padding : 16px;
     display: inline-block;
 }
 .media-image {
@@ -28,7 +28,7 @@
 }
 
 /* ================================================================================= */
-/* === PDF_Reader.Component.NavMedia :                            
+/* === PDF_Reader.Component.TopNav :                            
 /* ================================================================================= */
 .Home_header-nav {
     border-bottom : white 1px solid;

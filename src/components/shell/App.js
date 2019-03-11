@@ -122,12 +122,26 @@ function Modal(props) {
 function SideNav(props) {
   return <div className="App_SideNav">
     <ul className="nav flex-column text-light pt-3">
+      <SideNavHeader 
+        _title = {_APP_STRINGS.SideNav.List_Header}
+      />
       { _renderSideNavItems(_SIDE_NAV_LIST, props._isActive, props._toggle) }
       <hr className="w-100 my-3"/>
+      <SideNavHeader 
+        _title = {_APP_STRINGS.SideNav.Apps_Header}
+      />
       { _renderSideNavItems(_SIDE_NAV_APPS, props._isActive, props._toggle) }
     </ul>
   </div>
 }
+
+function SideNavHeader(props) {
+  return ( 
+    <div className="App_SideNav_header w-100 my-auto">
+      <small class="text-truncate"><b>{props._title}</b></small>
+    </div> );
+}
+
 function SideNavItem(props) {
   return ( 
     <li className={'nav-item App_SideNav_nav-item ' + isActive(props._isActive)} onClick={_handleNavItemOnClick(props._id, props._toggle)}>

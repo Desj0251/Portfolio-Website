@@ -11,7 +11,7 @@
 import React from 'react';
 
 import Home from '../home/Home';
-import PDF_reader from '../apps/PDF_reader/PDF_reader';
+import Checklist from '../apps/checklist/checklist';
 
 // =================================================================================
 // === Custom Classes :
@@ -34,19 +34,20 @@ export const _SIDE_NAV_LIST = [
                   'fas fa-home', 
                   Home ),
   new _navitem(   'NAV_002', 
-                  'Trending', 
-                  'fas fa-fire', 
+                  'Dashboard', 
+                  'fas fa-tachometer-alt', 
                   null ),
   new _navitem(   'NAV_003', 
-                  'Subscription', 
-                  'fab fa-youtube', 
+                  'Game Library', 
+                  'fas fa-gamepad', 
                   null ) 
 ];
+
 export const _SIDE_NAV_APPS = [
   new _navitem(   'APP_001', 
-                  'PDF Reader', 
-                  'fas fa-images', 
-                  PDF_reader ) 
+                  'Dynamic Checklist', 
+                  'fas fa-th-list', 
+                  Checklist )
 ];
 export const _TOP_NAV_LIST = [
   new _navitem(   'TOP_001',
@@ -69,5 +70,9 @@ export const _TOP_NAV_LIST = [
 export const _APP_STRINGS = {
   TopNav : {
     Title : 'Navbar'
+  },
+  SideNav : {
+    List_Header : 'Main Navigation',
+    Apps_Header : 'Applications'
   }
 }
