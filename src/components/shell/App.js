@@ -10,7 +10,7 @@
 // =================================================================================
 import React, { Component } from 'react';
 import './App.css';
-import { _SIDE_NAV_LIST, _SIDE_NAV_APPS, _APP_STRINGS } from './data';
+import { _SIDE_NAV_LIST, _SIDE_NAV_APPS, _TOP_NAV_LIST, _APP_STRINGS } from './data';
 
 // =================================================================================
 // === App.Component :
@@ -23,16 +23,29 @@ export default class App extends Component {
       SideNav : {
         isDrawerOpen: true,
         isActive: _SIDE_NAV_LIST[0].id
-      } 
+      },
+      Modal : {
+        isActive: false,
+        content : null
+      }
     }
+  }
+
+  toggleModal = ( _content ) => {
+    this.setState({
+      Modal : {
+        isActive: !this.state.Modal.isActive,
+        content : _content
+      }
+    })
   }
 
   toggleDrawer = () => {
     this.setState({ 
-        SideNav : { 
-          isDrawerOpen: !this.state.SideNav.isDrawerOpen,
-          isActive: this.state.SideNav.isActive 
-        }
+      SideNav : { 
+        isDrawerOpen: !this.state.SideNav.isDrawerOpen,
+        isActive: this.state.SideNav.isActive 
+      }
     });
   }
   
@@ -48,9 +61,16 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
+        { this.state.Modal.isActive &&
+          <Modal
+            _toggle={this.toggleModal.bind()}
+            _content={this.state.Modal.content}
+          />
+        }
         <TopNav 
           _title={_APP_STRINGS.TopNav.Title}
           _toggle={this.toggleDrawer.bind()}
+          _modal={this.toggleModal.bind()}
         />
 
         <div className="d-flex bd-highlight App_ContentArea App_content-height">
@@ -66,6 +86,34 @@ export default class App extends Component {
         </div>
       </div> 
     );}
+}
+
+// =================================================================================
+// === App.Component.Modal :
+// =================================================================================
+function Modal(props) {
+  
+  return (
+    <div className="App_Modal">
+      <div className="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
+        <div className="modal-content">
+          <div className="modal-header text-light">
+            <span className="navbar-brand">
+              <i className={props._content.icon + " mr-3"}/>
+              {props._content.title}
+            </span>
+            <TopNavButton 
+              _icon="fas fa-times"
+              _onClick={props._toggle}
+            />
+          </div>
+          <div className="modal-body text-light">
+            { props._content.content }
+          </div>
+        </div>
+      </div>
+    </div> 
+  );
 }
 
 // =================================================================================
@@ -169,10 +217,7 @@ function TopNav(props) {
       <div className="form-inline">
         <ul className="nav">
           <li className="nav-item">
-            <TopNavButton
-              _icon = "fas fa-user-astronaut"
-              _onClick = { handleOnClick.bind(this) }
-            />
+            { _renderTopNavItems( _TOP_NAV_LIST, props._modal ) }
           </li>
         </ul>
       </div>
@@ -180,9 +225,22 @@ function TopNav(props) {
     </nav>
   );
 }
+
+function _renderTopNavItems( list, func ) {
+  let nav_items = list.map((item, index) => 
+    <TopNavButton
+      key = { index }
+      _icon = { item.icon }
+      _onClick = { handleOnClick( func, item.content, item.title, item.icon ) }
+      _extra = { 'ml-2' }
+    />
+  );
+  return nav_items;
+}
+
 function TopNavButton(props) {
   return (
-    <button className="btn btn-outline-light" type="button" onClick={props._onClick}>
+    <button className={"btn btn-outline-light " + props._extra} type="button" onClick={props._onClick}>
       <i className={props._icon}/>
     </button> 
   );
@@ -199,4 +257,8 @@ function TopNavSearch(props) {
     </div> 
   );
 }
-function handleOnClick() { console.log("Click"); }
+function handleOnClick(props, Content, _title, _icon) { 
+  return function(e) {
+    props( { content: Content, title: _title, icon: _icon } );
+  }
+}

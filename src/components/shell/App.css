@@ -23,6 +23,34 @@ body {
 }
 
 /* ================================================================================= */
+/* === App.Component.Modal :                            
+/* ================================================================================= */
+.App_Modal {
+  height  : 100vh;
+  width   : 100vw;
+  background-color: rgba(0,0,0, 0.9);
+  position: absolute;
+  z-index: 10000;
+}
+
+.modal-content {
+  background-color : #282828;
+  border : white 1px solid;
+}
+.modal-header {
+  background-color : #1C1C1C;
+  padding : 8px 16px;
+  border-bottom : 1px solid white;
+}
+.modal-footer {
+  background-color : #1C1C1C;
+  padding : 8px 16px;
+}
+.modal-body {
+  padding : 0px;
+}
+
+/* ================================================================================= */
 /* === App.Component.TopNav :                            
 /* ================================================================================= */
 .App_TopNav {
@@ -42,7 +70,7 @@ body {
 }
 .App_content-wrapper {
   max-width: 80%;
-  margin : auto 10%;
+  margin : 0 auto;
   padding: 0;
   border-left : 1px solid white;
   border-right : 1px solid white;
@@ -105,4 +133,7 @@ hr {
 }
 .text-grey {
   color: #717171;
+}
+.bunch-o-content {
+  height: 75vh;
 }

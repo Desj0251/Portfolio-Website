@@ -43,11 +43,11 @@ export default class Home extends Component {
         return (
             <div className="Home w-100">
                 <div className="Home_header-image" />
-                <HomeNavMedia />
-                <HomeNav 
-                    _isActive = { this.state.TopNav.isActive }
-                    _toggle = { this.toggleActive.bind(this) }
-                />
+                    <HomeNavMedia />
+                    <HomeNav 
+                        _isActive = { this.state.TopNav.isActive }
+                        _toggle = { this.toggleActive.bind(this) }
+                    />
                 <div className="bunch-o-content"/>
             </div>
         );
