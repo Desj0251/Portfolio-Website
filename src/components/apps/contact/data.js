@@ -10,12 +10,12 @@
 // =================================================================================
 // === Imports :
 // =================================================================================
-import { Home } from './checklist';
+import { Home } from './contact';
 
 // =================================================================================
 // === Custom Classes :
 // =================================================================================
-class _Checklist_NavList {
+class _Contact_NavList {
     constructor(id, title, content) {
         this.id = id;
         this.title = title;
@@ -26,17 +26,17 @@ class _Checklist_NavList {
 // =================================================================================
 // === Constants :
 // =================================================================================
-export const _CHECK_NAV_LIST = [
-    new _Checklist_NavList(     'CHK_001', 
+export const _CONTACT_NAV_LIST = [
+    new _Contact_NavList(     'CHK_001', 
                                 'Home', 
                                 Home ),
-    new _Checklist_NavList(     'CHK_002', 
-                                'New Item', 
+    new _Contact_NavList(     'CHK_002', 
+                                'New Contact', 
                                 null ),
-    new _Checklist_NavList(     'CHK_003', 
+    new _Contact_NavList(     'CHK_003', 
                                 'Export', 
                                 null ),
-    new _Checklist_NavList(     'CHK_004', 
+    new _Contact_NavList(     'CHK_004', 
                                 'About', 
                                 null )
 ];
@@ -44,9 +44,9 @@ export const _CHECK_NAV_LIST = [
 // =================================================================================
 // === Strings :
 // =================================================================================
-export const _CHECK_READER_STRINGS = {
+export const _CONTACT_READER_STRINGS = {
     media : {
-        title : 'Dynamic Checklist',
+        title : 'Contact List',
         body : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce rhoncus euismod ex, ' 
         + 'vel posuere est tincidunt et. Cras gravida velit eget rhoncus iaculis. Cras elit mi, porta id ultrices ' 
         + 'pretium, tristique id neque. Ut id semper tellus, vitae molestie erat. Vestibulum venenatis aliquet nulla ' 

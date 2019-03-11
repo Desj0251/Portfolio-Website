@@ -9,19 +9,19 @@
 // === Imports :
 // =================================================================================
 import React, { Component } from 'react';
-import './checklist.css';
-import CHECK_icon from './assets/Checklist-Grey.png'
-import { _CHECK_NAV_LIST, _CHECK_READER_STRINGS } from './data';
+import './contact.css';
+import CONTACT_icon from './assets/Checklist-Grey.png'
+import { _CONTACT_NAV_LIST, _CONTACT_READER_STRINGS } from './data';
 
 // =================================================================================
 // === Home.Component :
 // =================================================================================
-export default class Checklist extends Component { 
+export default class Contacts extends Component { 
     constructor(props) {
         super(props);
         this.state = {
             TopNav : {
-                isActive: _CHECK_NAV_LIST[0].id
+                isActive: _CONTACT_NAV_LIST[0].id
             } 
         }
     }
@@ -36,14 +36,14 @@ export default class Checklist extends Component {
         return (
             <div className="PDF_reader w-100">
                 <div className="PDF_reader_header-image" />
-                <ChecklistNavMedia />
-                <ChecklistNav
+                <ContactNavMedia />
+                <ContactNav
                     _isActive = { this.state.TopNav.isActive }
                     _toggle = { this.toggleActive.bind(this) }
                 />
-                <ChecklistContent 
+                <ContactContent 
                     _content = { this.state.TopNav.isActive }
-                    _props = { 'Some state from Checklist.class is sent to Home.component' }
+                    _props = { 'Some state from Contact.class is sent to Home.component' }
                 />
             </div>
         );
@@ -51,12 +51,12 @@ export default class Checklist extends Component {
 }
 
 // =================================================================================
-// === Checklist.Component.ChecklistContent :
+// === Contact.Component.ContactContent :
 // =================================================================================
-function ChecklistContent(props) {
+function ContactContent(props) {
     let Content = null;
-    for ( let i = 0; i < _CHECK_NAV_LIST.length; i++ ) {
-        if ( _CHECK_NAV_LIST[i].id === props._content ) { Content = _CHECK_NAV_LIST[i].content }
+    for ( let i = 0; i < _CONTACT_NAV_LIST.length; i++ ) {
+        if ( _CONTACT_NAV_LIST[i].id === props._content ) { Content = _CONTACT_NAV_LIST[i].content }
     }
     if (Content) { return ( <Content 
                                 _props = { props._props }
@@ -67,14 +67,14 @@ function ChecklistContent(props) {
 // =================================================================================
 // === PDF_reader.Component.PDFReaderNavMedia :
 // =================================================================================
-function ChecklistNavMedia(props) {
+function ContactNavMedia(props) {
     return (
         <div className="PDF_reader_nav-media d-flex w-100">
             <div className="media">
-                <img src={CHECK_icon} className="mr-3 media-image align-self-center" alt="PDF icon"/>
+                <img src={CONTACT_icon} className="mr-3 media-image align-self-center" alt="PDF icon"/>
                 <div className="media-body">
-                    <p className="mt-0"><b>{_CHECK_READER_STRINGS.media.title}</b></p>
-                    <small className="font-weight-lighter muted">{_CHECK_READER_STRINGS.media.body}</small>
+                    <p className="mt-0"><b>{_CONTACT_READER_STRINGS.media.title}</b></p>
+                    <small className="font-weight-lighter muted">{_CONTACT_READER_STRINGS.media.body}</small>
                 </div>
             </div>
         </div>  
@@ -84,10 +84,10 @@ function ChecklistNavMedia(props) {
 // =================================================================================
 // === PDF_reader.Component.PDFReaderNav :
 // =================================================================================
-function ChecklistNav(props) {
+function ContactNav(props) {
     return ( 
         <ul className="nav sticky-top Home_header-nav">
-            {_render_NavItems(_CHECK_NAV_LIST, props._isActive, props._toggle)}
+            {_render_NavItems(_CONTACT_NAV_LIST, props._isActive, props._toggle)}
         </ul>
     );
 }
@@ -134,7 +134,7 @@ function _handleNavItemOnClick(id, toggle) {
 }
 
 // =================================================================================
-// === Checklist.Component.Home :
+// === Contact.Component.Home :
 // =================================================================================
 export function Home(props) {
     return (

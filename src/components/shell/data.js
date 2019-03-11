@@ -11,7 +11,7 @@
 import React from 'react';
 
 import Home from '../home/Home';
-import Checklist from '../apps/checklist/checklist';
+import Checklist from '../apps/contact/contact';
 
 // =================================================================================
 // === Custom Classes :
@@ -45,8 +45,8 @@ export const _SIDE_NAV_LIST = [
 
 export const _SIDE_NAV_APPS = [
   new _navitem(   'APP_001', 
-                  'Dynamic Checklist', 
-                  'fas fa-th-list', 
+                  'Contact List', 
+                  'fas fa-users', 
                   Checklist )
 ];
 export const _TOP_NAV_LIST = [
