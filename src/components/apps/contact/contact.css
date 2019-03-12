@@ -49,3 +49,13 @@
 .Home_topnav-item.active:hover {
     border-bottom : solid white 3px;
 }
+.home-recommend {
+    /* border-bottom : white 1px solid; */
+    background-color: #3D3D3D;
+}
+.spinner { 
+    height : 250px;
+}
+.error-box {
+    padding : 16px;
+}

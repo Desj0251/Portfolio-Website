@@ -138,7 +138,7 @@ function SideNav(props) {
 function SideNavHeader(props) {
   return ( 
     <div className="App_SideNav_header w-100 my-auto">
-      <small class="text-truncate"><b>{props._title}</b></small>
+      <small className="text-truncate"><b>{props._title}</b></small>
     </div> );
 }
 
@@ -192,7 +192,7 @@ function isActiveItem(current_id, active_id) { return ( current_id === active_id
 // =================================================================================
 function MainContent(props) {
   return (
-    <div className="text-light flex-grow-1 overflow_scroll">
+    <div className="text-light flex-grow-1 overflow_scroll main-content">
       <div className="wrapper App_content-wrapper">
         <div className="App_content">
           {_renderContent(props._content)}

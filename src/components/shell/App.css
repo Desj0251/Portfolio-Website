@@ -56,7 +56,7 @@ body {
 .App_TopNav {
   background-color : #282828;
   height : 56px;
-  border-bottom : white 1px solid;
+  border : white 1px solid;
 }
 
 /* ================================================================================= */
@@ -67,6 +67,7 @@ body {
 }
 .App_content {
   min-height : calc(100vh - 56px);
+  /* border-bottom : 1px white solid; */
 }
 .App_content-wrapper {
   max-width: 80%;
@@ -78,6 +79,10 @@ body {
 }
 .App_content-height {
   height : 100vh
+}
+.main-content {
+  border-right : 1px white solid;
+  border-bottom : 1px white solid;
 }
 
 /* ================================================================================= */
@@ -109,6 +114,8 @@ body {
   width : 20%;
   min-width: 20%;
   border-right : white 1px solid;
+  border-bottom : white 1px solid;
+  border-left : white 1px solid;
   overflow: scroll;
 }
 .App_SideNav_Footer {

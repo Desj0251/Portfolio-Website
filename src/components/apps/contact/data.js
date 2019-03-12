@@ -27,16 +27,13 @@ class _Contact_NavList {
 // === Constants :
 // =================================================================================
 export const _CONTACT_NAV_LIST = [
-    new _Contact_NavList(     'CHK_001', 
+    new _Contact_NavList(       'CHK_001', 
                                 'Home', 
                                 Home ),
-    new _Contact_NavList(     'CHK_002', 
-                                'New Contact', 
-                                null ),
-    new _Contact_NavList(     'CHK_003', 
+    new _Contact_NavList(       'CHK_002', 
                                 'Export', 
                                 null ),
-    new _Contact_NavList(     'CHK_004', 
+    new _Contact_NavList(       'CHK_003', 
                                 'About', 
                                 null )
 ];
@@ -54,5 +51,9 @@ export const _CONTACT_READER_STRINGS = {
         + 'luctus mauris nisl eu tellus. Pellentesque id maximus augue. Donec eros magna, mattis eget vestibulum at, ' 
         + 'imperdiet dictum neque. Etiam tortor arcu, faucibus ac porta a, vehicula vitae urna. '
         + 'Vivamus ac convallis ante, sit amet volutpat tortor.'
+    },
+    error : {
+        title : '',
+        body : ''
     }
 }

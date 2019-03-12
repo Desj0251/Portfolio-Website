@@ -1,5 +1,5 @@
 // =================================================================================
-// ==   File    : Home.js
+// ==   File    : contact.js
 // ==   Author  : John Desjardins | K3nata8
 // ==   Version : 0.0.1
 // ==   Date    : March 2019
@@ -17,21 +17,44 @@ import { _CONTACT_NAV_LIST, _CONTACT_READER_STRINGS } from './data';
 // === Home.Component :
 // =================================================================================
 export default class Contacts extends Component { 
+    
+    // =============================
+    // === Constructor :
+    // =============================
     constructor(props) {
         super(props);
         this.state = {
-            TopNav : {
-                isActive: _CONTACT_NAV_LIST[0].id
-            } 
+            TopNav : { isActive: _CONTACT_NAV_LIST[0].id },
+            RandomUser : {
+                isLoading : true,
+                user : null,
+                error : null
+            }
         }
     }
+
+    // =============================
+    // === Lifecycle Events :
+    // =============================
+    componentDidMount = (props) => {
+        fetchTopFive( 100, 'female', this._changeState );
+    }
+
+    // =============================
+    // === Callback Methods :
+    // =============================
     toggleActive = (_newProps) => {
         this.setState({
-            TopNav : { 
-                isActive: _newProps 
-            }
+            TopNav : { isActive: _newProps }
         });
     }
+    _changeState = ( props ) => {
+        this.setState(props);
+    }
+
+    // =============================
+    // === Render :
+    // =============================
     render() {
         return (
             <div className="PDF_reader w-100">
@@ -43,7 +66,7 @@ export default class Contacts extends Component {
                 />
                 <ContactContent 
                     _content = { this.state.TopNav.isActive }
-                    _props = { 'Some state from Contact.class is sent to Home.component' }
+                    _props = { this.state.RandomUser }
                 />
             </div>
         );
@@ -128,7 +151,6 @@ function isActive(isActive) {
 }
 function _handleNavItemOnClick(id, toggle) {
     return function(e) {
-        console.log('click')
         toggle(id);
     }
 }
@@ -138,8 +160,83 @@ function _handleNavItemOnClick(id, toggle) {
 // =================================================================================
 export function Home(props) {
     return (
-        <div className="PDF_view w-100 bunch-o-content">
-            {props._props}
+        <div className="w-100 home-recommend">
+            { props._props.isLoading && <RecommendLoading /> }
+            { (!props._props.isLoading && props._props.user && !props._props.error) && 
+                <RecommendUser
+                    _user= { props._props.user }
+                /> 
+            }
+            { props._props.error &&
+                <Error 
+                    _error= { props._props.error }
+                />
+            }
         </div>
     );
+}
+function Error(props) {
+    return (
+        <div className="row align-items-center w-100 m-0">
+            <div className="col container error-box">
+                <div className="alert alert-dark m-0" role="alert">
+                    <h4 className="alert-heading">API Request Failed!</h4>
+                    <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+                    <hr className="mb-3" />
+                    <p className="mb-0"> <strong>Error Message :</strong> { props._error.message }</p>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+function RecommendUser(props) {
+    let user = props._user.results;
+    return (
+        <div className="">
+            
+        </div>
+    );
+}
+
+function RecommendLoading(props) {
+    return (
+        <div className="spinner row align-items-center w-100 m-0">
+            <div className="col text-center">
+                <Spinner />
+                <Spinner />
+                <Spinner />
+                <Spinner />
+                <Spinner />
+            </div>
+        </div>
+    );
+}
+
+function Spinner(props) {
+    return (
+        <div className="spinner-grow text-light mx-1" role="status">
+            <span className="sr-only">Loading...</span>
+        </div> );
+}
+
+
+// =================================================================================
+// === Miscelaneous :
+// =================================================================================
+async function fetchTopFive(results, gender, callback) {
+    const URL = `https://randomuser.me/api/?results=${results}&gender=${gender}&nat=ca`;
+    try {
+      const fetchResult = fetch(new Request(URL, { method: 'GET', cache: 'reload' }));
+      const response = await fetchResult;
+      if (response.ok) {
+        const jsonData = await response.json();
+        // console.log(JSON.stringify(jsonData));
+        callback({ RandomUser : { isLoading : false, user : jsonData, error : null } });
+      } else {
+        // console.log(`Response.status: ${response.status}`);
+      }
+    } catch (e) {
+        callback({ RandomUser : { isLoading : false, user : {}, error : e } });
+    }
 }

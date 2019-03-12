@@ -146,7 +146,6 @@ function isActive(isActive) {
 }
 function _handleNavItemOnClick(id, toggle) {
     return function(e) {
-        console.log('click')
         toggle(id);
     }
 }
