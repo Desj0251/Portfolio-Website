@@ -13,6 +13,9 @@ import './contact.css';
 import CONTACT_icon from './assets/Checklist-Grey.png'
 import { _CONTACT_NAV_LIST, _CONTACT_READER_STRINGS } from './data';
 
+const FEMALE = 'female';
+const MALE = 'male';
+
 // =================================================================================
 // === Home.Component :
 // =================================================================================
@@ -37,7 +40,7 @@ export default class Contacts extends Component {
     // === Lifecycle Events :
     // =============================
     componentDidMount = (props) => {
-        fetchTopFive( 100, 'female', this._changeState );
+        fetchTopFive( 1, FEMALE, this._changeState );
     }
 
     // =============================
@@ -160,18 +163,23 @@ function _handleNavItemOnClick(id, toggle) {
 // =================================================================================
 export function Home(props) {
     return (
-        <div className="w-100 home-recommend">
-            { props._props.isLoading && <RecommendLoading /> }
-            { (!props._props.isLoading && props._props.user && !props._props.error) && 
-                <RecommendUser
-                    _user= { props._props.user }
-                /> 
-            }
-            { props._props.error &&
-                <Error 
-                    _error= { props._props.error }
-                />
-            }
+        <div>
+            <div className="w-100 home-recommend">
+                { props._props.isLoading && <RecommendLoading /> }
+                { (!props._props.isLoading && props._props.user && !props._props.error) && 
+                    <RecommendUser
+                        _user= { props._props.user }
+                    /> 
+                }
+                { props._props.error &&
+                    <div className="w-100">
+                        <Error 
+                            _error= { props._props.error }
+                        />
+                    </div>
+                }
+            </div>
+            <div className = "bunch-o-content" />
         </div>
     );
 }
@@ -180,10 +188,10 @@ function Error(props) {
         <div className="row align-items-center w-100 m-0">
             <div className="col container error-box">
                 <div className="alert alert-dark m-0" role="alert">
-                    <h4 className="alert-heading">API Request Failed!</h4>
-                    <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+                    <h4 className="alert-heading">{_CONTACT_READER_STRINGS.error.title}</h4>
+                    <p>{_CONTACT_READER_STRINGS.error.body}</p>
                     <hr className="mb-3" />
-                    <p className="mb-0"> <strong>Error Message :</strong> { props._error.message }</p>
+                    <p className="mb-0"> <strong>{_CONTACT_READER_STRINGS.error.messageLabel}</strong> { props._error.message }</p>
                 </div>
             </div>
         </div>
@@ -193,7 +201,7 @@ function Error(props) {
 function RecommendUser(props) {
     let user = props._user.results;
     return (
-        <div className="">
+        <div className="spinner">
             
         </div>
     );
