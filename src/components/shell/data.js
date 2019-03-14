@@ -47,7 +47,7 @@ export const _SIDE_NAV_APPS = [
   new _navitem(   'APP_001', 
                   'Contact List', 
                   'fas fa-users', 
-                  Checklist )
+                  Checklist ),
 ];
 export const _TOP_NAV_LIST = [
   new _navitem(   'TOP_001',
