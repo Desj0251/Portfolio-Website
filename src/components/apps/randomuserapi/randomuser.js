@@ -9,12 +9,13 @@
 // === Imports :
 // =================================================================================
 import React, { Component } from 'react';
-import './contact.css';
+import './randomuser.css';
 import CONTACT_icon from './assets/Checklist-Grey.png'
 import { _CONTACT_NAV_LIST, _CONTACT_READER_STRINGS } from './data';
 
-const FEMALE = 'female';
-const MALE = 'male';
+// const FEMALE    = 'female';
+// const MALE      = 'male';
+const BOTH      = 'both'
 
 // =================================================================================
 // === Home.Component :
@@ -31,7 +32,8 @@ export default class Contacts extends Component {
             RandomUser : {
                 isLoading : true,
                 user : null,
-                error : null
+                error : null,
+                isActive : null
             }
         }
     }
@@ -40,7 +42,7 @@ export default class Contacts extends Component {
     // === Lifecycle Events :
     // =============================
     componentDidMount = (props) => {
-        fetchTopFive( 1, FEMALE, this._changeState );
+        fetchUsers( 50, BOTH, this._changeState );
     }
 
     // =============================
@@ -53,6 +55,19 @@ export default class Contacts extends Component {
     }
     _changeState = ( props ) => {
         this.setState(props);
+    }
+    _changeActiveContact = (props) => {
+        const that = this;
+        return function(e) {
+            that.setState({
+                RandomUser : {
+                    isLoading : that.state.RandomUser.isLoading,
+                    user : that.state.RandomUser.user,
+                    error : that.state.RandomUser.error,
+                    isActive : props
+                }
+            });
+        }
     }
 
     // =============================
@@ -70,6 +85,7 @@ export default class Contacts extends Component {
                 <ContactContent 
                     _content = { this.state.TopNav.isActive }
                     _props = { this.state.RandomUser }
+                    _callback = { this._changeActiveContact }
                 />
             </div>
         );
@@ -84,14 +100,12 @@ function ContactContent(props) {
     for ( let i = 0; i < _CONTACT_NAV_LIST.length; i++ ) {
         if ( _CONTACT_NAV_LIST[i].id === props._content ) { Content = _CONTACT_NAV_LIST[i].content }
     }
-    if (Content) { return ( <Content 
-                                _props = { props._props }
-                            /> ); }
-    else { return <div className="bunch-o-content" /> }
+    if (Content) { return ( <Content _props = { props._props } _callback = { props._callback } /> ); }
+    else { return ( <div className="bunch-o-content" /> ) }
 }
 
 // =================================================================================
-// === PDF_reader.Component.PDFReaderNavMedia :
+// === PDF_reader.Component.ContactNavMedia :
 // =================================================================================
 function ContactNavMedia(props) {
     return (
@@ -108,7 +122,7 @@ function ContactNavMedia(props) {
 }
 
 // =================================================================================
-// === PDF_reader.Component.PDFReaderNav :
+// === Contact.Component.ContactNav :
 // =================================================================================
 function ContactNav(props) {
     return ( 
@@ -159,80 +173,9 @@ function _handleNavItemOnClick(id, toggle) {
 }
 
 // =================================================================================
-// === Contact.Component.Home :
-// =================================================================================
-export function Home(props) {
-    return (
-        <div>
-            <div className="w-100 home-recommend">
-                { props._props.isLoading && <RecommendLoading /> }
-                { (!props._props.isLoading && props._props.user && !props._props.error) && 
-                    <RecommendUser
-                        _user= { props._props.user }
-                    /> 
-                }
-                { props._props.error &&
-                    <div className="w-100">
-                        <Error 
-                            _error= { props._props.error }
-                        />
-                    </div>
-                }
-            </div>
-            <div className = "bunch-o-content" />
-        </div>
-    );
-}
-function Error(props) {
-    return (
-        <div className="row align-items-center w-100 m-0">
-            <div className="col container error-box">
-                <div className="alert alert-dark m-0" role="alert">
-                    <h4 className="alert-heading">{_CONTACT_READER_STRINGS.error.title}</h4>
-                    <p>{_CONTACT_READER_STRINGS.error.body}</p>
-                    <hr className="mb-3" />
-                    <p className="mb-0"> <strong>{_CONTACT_READER_STRINGS.error.messageLabel}</strong> { props._error.message }</p>
-                </div>
-            </div>
-        </div>
-    );
-}
-
-function RecommendUser(props) {
-    let user = props._user.results;
-    return (
-        <div className="spinner">
-            
-        </div>
-    );
-}
-
-function RecommendLoading(props) {
-    return (
-        <div className="spinner row align-items-center w-100 m-0">
-            <div className="col text-center">
-                <Spinner />
-                <Spinner />
-                <Spinner />
-                <Spinner />
-                <Spinner />
-            </div>
-        </div>
-    );
-}
-
-function Spinner(props) {
-    return (
-        <div className="spinner-grow text-light mx-1" role="status">
-            <span className="sr-only">Loading...</span>
-        </div> );
-}
-
-
-// =================================================================================
 // === Miscelaneous :
 // =================================================================================
-async function fetchTopFive(results, gender, callback) {
+async function fetchUsers(results, gender, callback) {
     const URL = `https://randomuser.me/api/?results=${results}&gender=${gender}&nat=ca`;
     try {
       const fetchResult = fetch(new Request(URL, { method: 'GET', cache: 'reload' }));
@@ -240,11 +183,19 @@ async function fetchTopFive(results, gender, callback) {
       if (response.ok) {
         const jsonData = await response.json();
         // console.log(JSON.stringify(jsonData));
-        callback({ RandomUser : { isLoading : false, user : jsonData, error : null } });
+        let data = jsonData.results.sort(nestedSort("login", "username"));
+        callback({ RandomUser : { isLoading : false, user : data, error : null, isActive: 0 } });
       } else {
         // console.log(`Response.status: ${response.status}`);
       }
     } catch (e) {
-        callback({ RandomUser : { isLoading : false, user : {}, error : e } });
+        callback({ RandomUser : { isLoading : false, user : {}, error : e, isActive: null } });
     }
+}
+
+let nestedSort = (prop1, prop2 = null, direction = 'asc') => (e1, e2) => {
+    const a = prop2 ? e1[prop1][prop2] : e1[prop1],
+        b = prop2 ? e2[prop1][prop2] : e2[prop1],
+        sortOrder = direction === "asc" ? 1 : -1
+    return (a < b) ? -sortOrder : (a > b) ? sortOrder : 0;
 }

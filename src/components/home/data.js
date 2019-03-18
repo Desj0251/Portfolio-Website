@@ -75,6 +75,6 @@ export const _HOME_NAV_SOCIAL = [
 export const _HOME_STRINGS = {
     media : {
         name : 'John Desjardins',
-        title : '-Mobile Developer'
+        title : '-Mobile Developer-'
     }
 }

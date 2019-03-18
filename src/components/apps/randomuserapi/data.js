@@ -1,5 +1,3 @@
-// 1552306874
-
 // =================================================================================
 // ==   File    : PDF_reader.data.js
 // ==   Author  : John Desjardins | K3nata8
@@ -10,7 +8,7 @@
 // =================================================================================
 // === Imports :
 // =================================================================================
-import { Home } from './contact';
+import { Home } from './contacts/contact';
 
 // =================================================================================
 // === Custom Classes :
@@ -28,14 +26,8 @@ class _Contact_NavList {
 // =================================================================================
 export const _CONTACT_NAV_LIST = [
     new _Contact_NavList(       'CHK_001', 
-                                'Home', 
-                                Home ),
-    new _Contact_NavList(       'CHK_002', 
-                                'Export', 
-                                null ),
-    new _Contact_NavList(       'CHK_003', 
-                                'About', 
-                                null )
+                                'Contacts', 
+                                Home )
 ];
 
 // =================================================================================
@@ -43,7 +35,7 @@ export const _CONTACT_NAV_LIST = [
 // =================================================================================
 export const _CONTACT_READER_STRINGS = {
     media : {
-        title : 'Contact List',
+        title : 'Random User API Projects',
         body : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce rhoncus euismod ex, ' 
         + 'vel posuere est tincidunt et. Cras gravida velit eget rhoncus iaculis. Cras elit mi, porta id ultrices ' 
         + 'pretium, tristique id neque. Ut id semper tellus, vitae molestie erat. Vestibulum venenatis aliquet nulla ' 

@@ -55,8 +55,33 @@
     border-bottom : 1px white solid;
 }
 .spinner { 
-    height : 250px;
+    height : 112px;
 }
 .error-box {
     padding : 25px;
+    height : 250px;
+}
+.user-list {
+    height : 500px;
+    overflow : scroll;
+    border-right : white solid 1px; 
+    background-color : #1C1C1C;
+}
+.contact-list-item {
+    padding : 8px 16px;
+    height : 56px;
+}
+.contact-list-item:hover {
+    background-color : #333;
+}
+.contact-list-item.active {
+    background-color : #333;
+}
+.contact-list-item.active:hover {
+    background-color : #484848;
+}
+.user-avatar {
+    height : 90%;
+    border-radius: 50%;
+    border : 1px white solid;
 }

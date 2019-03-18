@@ -11,7 +11,7 @@
 import React from 'react';
 
 import Home from '../home/Home';
-import Checklist from '../apps/contact/contact';
+import RandomUser from '../apps/randomuserapi/randomuser';
 
 // =================================================================================
 // === Custom Classes :
@@ -45,9 +45,9 @@ export const _SIDE_NAV_LIST = [
 
 export const _SIDE_NAV_APPS = [
   new _navitem(   'APP_001', 
-                  'Contact List', 
+                  'Random User API', 
                   'fas fa-users', 
-                  Checklist ),
+                  RandomUser ),
 ];
 export const _TOP_NAV_LIST = [
   new _navitem(   'TOP_001',
