@@ -27,7 +27,10 @@ class _Contact_NavList {
 export const _CONTACT_NAV_LIST = [
     new _Contact_NavList(       'CHK_001', 
                                 'Contacts', 
-                                Home )
+                                Home ),
+    new _Contact_NavList(       'CHK_002', 
+                                'Dating', 
+                                null ),
 ];
 
 // =================================================================================

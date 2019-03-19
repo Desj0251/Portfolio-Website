@@ -144,7 +144,7 @@ function DetailsTable(props) {
                 <DetailsTableRow 
                     _icon={''} 
                     _title={''} 
-                    _content={`${jsUcfirst(user.location.city)}, ${jsUcfirst(user.location.state)}`}  
+                    _content={`${capital_letter(user.location.city)}, ${capital_letter(user.location.state)}`}  
                 />
                 <DetailsTableRow 
                     _icon={''} 
