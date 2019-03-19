@@ -70,6 +70,7 @@
 .contact-list-item {
     padding : 8px 16px;
     height : 56px;
+    cursor: pointer;
 }
 .contact-list-item:hover {
     background-color : #333;
@@ -83,5 +84,14 @@
 .user-avatar {
     height : 90%;
     border-radius: 50%;
+    border : 1px white solid;
+}
+.user-details {
+    height : 500px;
+    padding : 8px 16px;
+}
+.large-avatar {
+    width : 112px;
+    height : auto;
     border : 1px white solid;
 }
