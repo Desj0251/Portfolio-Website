@@ -10,7 +10,6 @@
 // =================================================================================
 // === Main Navigation Page Imports
 import Home from "../components/navigation/home/index";
-
 // === Application Showcase Page Imports
 import App_001 from "../components/applications/App_001/index";
 
@@ -30,7 +29,12 @@ class _navitem {
 // === Constants :
 // =================================================================================
 export const _SIDE_NAV_LIST = [
-  new _navitem("NAV_001", { en: "Home", fr: "" }, "fas fa-home", Home)
+  new _navitem(
+    "NAV_001",
+    { en: "Home", fr: "Page d'Accueil" },
+    "fas fa-home",
+    Home
+  )
 ];
 export const _SIDE_NAV_APPS = [
   new _navitem(
