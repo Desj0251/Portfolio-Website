@@ -65,18 +65,6 @@ body {
 .App_ContentArea {
   padding-top: 56px;
 }
-.App_content {
-  min-height: calc(100vh - 56px);
-  /* border-bottom : 1px white solid; */
-}
-.App_content-wrapper {
-  max-width: 80%;
-  margin: 0 10%;
-  padding: 0;
-  border-left: 1px solid white;
-  border-right: 1px solid white;
-  background-color: #282828;
-}
 .App_content-height {
   height: 100vh;
 }
@@ -84,6 +72,9 @@ body {
   border-right: 1px white solid;
   border-bottom: 1px white solid;
   border-left: white 1px solid;
+}
+.Application {
+  min-height: calc(100vh - 57px);
 }
 
 /* ================================================================================= */
@@ -113,7 +104,7 @@ body {
 .App_SideNav {
   background-color: #1c1c1c;
   width: 17%;
-  /* min-width: 17%; */
+  min-width: 180px;
   /* border-right : white 1px solid; */
   border-bottom: white 1px solid;
   border-left: white 1px solid;
@@ -134,10 +125,7 @@ body {
 /* ================================================================================= */
 /* === Miscelaneous :                            
 /* ================================================================================= */
-.bunch-o-content {
-  height: 200vh;
-  width: 100%;
-}
+
 span.active {
   color: white;
 }

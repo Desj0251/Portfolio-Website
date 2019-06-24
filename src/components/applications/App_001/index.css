@@ -1,0 +1,34 @@
+/* ================================================================================= */
+/* ==   File    : index.css
+/* ==   Author  : John Desjardins | John.Desjardins@tc.gc.ca
+/* ==   Version : 0.0.1
+/* ==   Date    : March 2019
+/* ================================================================================= */
+
+/* ================================================================================= */
+/* ==  Colours:
+/* ==     - Colour 1    : #1c2938   : Primary Background Colour
+/* ==     - Colour 2    : #8899a6   : Bluish Grey Muted Colour
+/* ==     - Colour 3    : #10171e   : Dark Blue Blackground Colour  
+/* ==     - Colour 4    : #fab81e   : Yellow Accent Colour
+/* ==     - Colour 5    : #15202b   : Primary Muted Blue
+/* ================================================================================= */
+.App-001 {
+  background-color: #10171e;
+}
+
+.accent-color {
+  color: #fab81e;
+}
+.muted-color {
+  color: #8899a6;
+}
+
+.top-navbar {
+  height: 46px;
+  border-bottom: 1px solid #8899a6;
+}
+
+.bg-primary-01 {
+  background-color: #1c2938;
+}

@@ -21,9 +21,14 @@ import TopNav from "./components/TopNav";
 // === App.Component :
 // =================================================================================
 export default class App extends Component {
+  // --- Constructor :
   constructor(props) {
     super(props);
     this.state = {
+      Main: {
+        language: "en"
+      },
+      // - Side Nav Initial State
       SideNav: {
         isDrawerOpen: true,
         isActive: _SIDE_NAV_LIST[0].id
@@ -31,6 +36,7 @@ export default class App extends Component {
     };
   }
 
+  // --- Methods :
   toggleDrawer = () => {
     this.setState({
       SideNav: {
@@ -49,27 +55,34 @@ export default class App extends Component {
     });
   };
 
+  // --- Render Method :
   render() {
     return (
       <div className="App">
         <TopNav
-          _title={_APP_STRINGS.TopNav.Title}
+          _title={_APP_STRINGS.TopNav.Title[this.state.Main.language]}
           _toggle={this.toggleDrawer.bind()}
+          _config={this.state.Main}
         />
         <div className="d-flex App_ContentArea App_content-height">
           {this.state.SideNav.isDrawerOpen && (
             <SideNav
               _isActive={this.state.SideNav.isActive}
               _toggle={this.toggleActive.bind()}
+              _config={this.state.Main}
             />
           )}
           {!this.state.SideNav.isDrawerOpen && (
             <SideNavCondensed
               _isActive={this.state.SideNav.isActive}
               _toggle={this.toggleActive.bind()}
+              _config={this.state.Main}
             />
           )}
-          <MainContent _content={this.state.SideNav.isActive} />
+          <MainContent
+            _content={this.state.SideNav.isActive}
+            _config={this.state.Main}
+          />
         </div>
       </div>
     );

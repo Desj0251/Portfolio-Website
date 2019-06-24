@@ -63,11 +63,22 @@ export function SideNav(props) {
   return (
     <div className="App_SideNav">
       <ul className="nav flex-column text-light pt-3">
-        <SideNavHeader _title={_APP_STRINGS.SideNav.List_Header} />
-        {_renderSideNavItems(_SIDE_NAV_LIST, props._isActive, props._toggle)}
+        <SideNavHeader
+          _title={_APP_STRINGS.SideNav.List_Header[props._config.language]}
+        />
+        {_renderSideNavItems(
+          _SIDE_NAV_LIST,
+          props._isActive,
+          props._toggle,
+          props._config.language
+        )}
         <hr className="w-100 my-2" />
-        <SideNavHeader _title={_APP_STRINGS.SideNav.Apps_Header} />
-        {_renderSideNavItems(_SIDE_NAV_APPS, props._isActive, props._toggle)}
+        <SideNavHeader
+          _title={_APP_STRINGS.SideNav.Apps_Header[props._config.language]}
+        />
+        {_renderSideNavItems(_SIDE_NAV_APPS, props._isActive, props._toggle, [
+          props._config.language
+        ])}
       </ul>
     </div>
   );
@@ -106,11 +117,11 @@ function SideNavItem(props) {
     </li>
   );
 }
-function _renderSideNavItems(list, state, toggle) {
+function _renderSideNavItems(list, state, toggle, lang) {
   let NavItems = list.map((item, index) => (
     <SideNavItem
       key={index}
-      _title={item.title}
+      _title={item.title[lang]}
       _icon={item.icon}
       _id={item.id}
       _isActive={isActiveItem(item.id, state)}

@@ -1,8 +1,18 @@
 // =================================================================================
+// ==   File    : App.config.js
+// ==   Author  : John Desjardins | John.Desjardins@tc.gc.ca
+// ==   Version : 0.0.1
+// ==   Date    : June 2019
+// =================================================================================
+
+// =================================================================================
 // === Imports :
 // =================================================================================
-// import React from "react";
-// import Home from "../home/Home";
+// === Main Navigation Page Imports
+import Home from "../components/navigation/home/index";
+
+// === Application Showcase Page Imports
+import App_001 from "../components/applications/App_001/index";
 
 // =================================================================================
 // === Custom Classes :
@@ -20,14 +30,14 @@ class _navitem {
 // === Constants :
 // =================================================================================
 export const _SIDE_NAV_LIST = [
-  new _navitem("NAV_001", "Home", "fas fa-home", null)
+  new _navitem("NAV_001", { en: "Home", fr: "" }, "fas fa-home", Home)
 ];
 export const _SIDE_NAV_APPS = [
   new _navitem(
     "APP_001",
-    "Placeholder Application with Long Text",
-    "fab fa-dev",
-    null
+    { en: "UI Test #1", fr: "UI Test #1" },
+    "fas fa-th",
+    App_001
   )
 ];
 
@@ -36,10 +46,19 @@ export const _SIDE_NAV_APPS = [
 // =================================================================================
 export const _APP_STRINGS = {
   TopNav: {
-    Title: "Navbar"
+    Title: {
+      en: "Navbar",
+      fr: "Titre"
+    }
   },
   SideNav: {
-    List_Header: "Main Navigation",
-    Apps_Header: "Application Showcase"
+    List_Header: {
+      en: "Main Navigation",
+      fr: "Navigation Principale"
+    },
+    Apps_Header: {
+      en: "Application Showcase",
+      fr: "Vitrine d'Application"
+    }
   }
 };
