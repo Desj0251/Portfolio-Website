@@ -9,6 +9,7 @@
 // === Imports :
 // =================================================================================
 import React, { Component } from "react";
+import "./index.css";
 
 export default class App extends Component {
   // --- Constructor :
@@ -17,6 +18,6 @@ export default class App extends Component {
     this.state = {};
   }
   render() {
-    return <div className="Application" />;
+    return <div className="Application Home" />;
   }
 }
