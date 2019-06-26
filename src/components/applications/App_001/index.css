@@ -14,7 +14,12 @@
 /* ==     - Colour 5    : #15202b   : Primary Muted Blue
 /* ================================================================================= */
 .App-001 {
-  background-color: #10171e;
+  /* background-color: #10171e; */
+  padding: 16px;
+}
+
+thead {
+  background-color: #282828;
 }
 
 .accent-color {

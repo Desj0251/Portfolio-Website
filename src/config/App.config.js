@@ -35,8 +35,8 @@ export const _SIDE_NAV_LIST = [
 export const _SIDE_NAV_APPS = [
   new _navitem(
     "APP_001",
-    { en: "UI Test #1", fr: "UI Test #1" },
-    "fas fa-th",
+    { en: "Audit Table Test", fr: "Vérification des Comptes" },
+    "fas fa-table",
     App_001
   )
 ];
