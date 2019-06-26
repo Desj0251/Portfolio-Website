@@ -20,9 +20,12 @@ export default class App extends Component {
   render() {
     return <div className="Application App-001">
       <table class="table table-sm table-bordered text-light">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
+        <thead className="text-center">
+          <tr className="title">
+            <th colSpan="4"><b>Unformatted Applicant Data</b></th>
+          </tr>
+          <tr className="headers">
+            <th scope="col">Rev</th>
             <th scope="col">First</th>
             <th scope="col">Last</th>
             <th scope="col">Handle</th>
