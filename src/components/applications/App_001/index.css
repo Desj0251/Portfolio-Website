@@ -18,7 +18,11 @@
   padding: 16px;
 }
 
-thead {
+tr.title {
+  background-color: #333;
+}
+
+tr.headers {
   background-color: #282828;
 }
 
